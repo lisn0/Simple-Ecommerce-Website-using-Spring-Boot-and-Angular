@@ -94,19 +94,35 @@
                     </li>
                   </ul>
                   <div *ngIf="selectedcategory">
-                    <h2>{{selectedcategory.name }}</h2>
                     <div>
-                      <label for="category">category name: </label>
-                      <input type="text" class="form-control"  formControlName="category" [(ngModel)]="selectedcategory.name"  >
+                      <label for="category">category name:   </label>
+                      <input type="hidden" class="form-control"  formControlName="category" [(ngModel)]="selectedcategory"  >
+                      <span class="name">{{selectedcategory.name}}</span>
 
                     </div>
                   </div>
                 </div>
 
-                <div class="form-group">
-                  <label for="seller">seller</label>
-                  <input type="text" class="form-control"  formControlName="seller" [(ngModel)]="updProduct.seller"  >
+              <div class="form-group">
+                <ul>
+                  <li *ngFor="let sel of sellers">
+                    <button [class.selected]="sel === selectedseller" type="button" (click)="onSelect2(sel)">
+                      <span class="name">{{sel.firstName}}</span>
+                      <span class="name">{{sel.lastName}}</span>
+
+                    </button>
+                  </li>
+                </ul>
+                <div *ngIf="selectedseller">
+
+                  <div>
+                    <input type="hidden" class="form-control"  formControlName="seller" [(ngModel)]="selectedseller"  >
+                    <span class="name">{{selectedseller.firstName}}</span>
+
+                    <span class="name">{{selectedseller.lastName}}</span>
+                  </div>
                 </div>
+              </div>
 
             </div>
               <div [hidden]="!isupdated">

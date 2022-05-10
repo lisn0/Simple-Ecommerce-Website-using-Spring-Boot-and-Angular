@@ -6,6 +6,8 @@ import { Observable,Subject } from "rxjs";
 
 import {FormControl,FormGroup,Validators} from '@angular/forms';
 import {CategoryService} from "../services/category.service";
+import {Seller} from "../models/seller";
+import {SellerService} from "../services/seller.service";
 
 @Component({
   selector: 'app-product-list',
@@ -15,7 +17,8 @@ import {CategoryService} from "../services/category.service";
 export class ProductListComponent implements OnInit {
 
  constructor(private productservice:ProductService,
-             private categoryservice:CategoryService) { }
+             private categoryservice:CategoryService,
+             private sellerservice:SellerService) { }
 
   dtOptions: DataTables.Settings = {};
   dtTrigger: Subject<any>= new Subject();
@@ -24,6 +27,9 @@ export class ProductListComponent implements OnInit {
   products: Observable<Product[]>;
   catigories: Observable<Category[]>;
   selectedcategory?: Category;
+  sellers: Observable<Category[]>;
+  selectedseller?: Seller;
+
   product: Product=new Product();
   updProduct: Product=new Product();
   deleteMessage=false;
@@ -38,24 +44,30 @@ export class ProductListComponent implements OnInit {
       stateSave:true,
       lengthMenu:[[6, 16, 20, -1], [6, 16, 20, "All"]],
       processing: true
-    };
+    }
     this.categoryservice.getCategoryList().subscribe(data =>{
       this.catigories =data;
       console.log('catigories');
       console.log(this.catigories);
-      this.dtTrigger.next();
     });
 
     this.productservice.getProductList().subscribe(data =>{
     this.products =data;
     console.log('products');
     console.log(this.products);
+    });
 
-    this.dtTrigger.next();
+    this.sellerservice.getSellerList().subscribe(data =>{
+      this.sellers =data;
+      console.log('sellers');
+      console.log(this.sellers);
     });
   }
   onSelect(cat: Category): void {
     this.selectedcategory = cat;
+  }
+  onSelect2(sel: Seller): void {
+    this.selectedseller = sel;
   }
 
   deleteProduct(id: string) {
@@ -99,7 +111,7 @@ export class ProductListComponent implements OnInit {
    console.log(this.ProductId.value);
 
 
-   this.productservice.updateProduct(this.product.id,this.product).subscribe(
+   this.productservice.updateProduct(this.product.id, this.product).subscribe(
     data => {
       this.isupdated=true;
       this.productservice.getProductList().subscribe(data =>{
@@ -128,7 +140,7 @@ export class ProductListComponent implements OnInit {
   }
 
   get ProductCategory(){
-    return this.productupdateform.get('categorys');
+    return this.productupdateform.get('category');
   }
 
   get ProductSeller(){

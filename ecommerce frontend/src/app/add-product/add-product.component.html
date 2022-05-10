@@ -38,21 +38,25 @@
           </ul>
           <div *ngIf="selectedcategory">
             <div>
-              <input type="hidden" class="form-control"  formControlName="category" [(ngModel)]="selectedcategory.name"  >
+
+              <input type="hidden" class="form-control"  formControlName="category" [(ngModel)]="selectedcategory"  >
+              <span class="name">{{selectedcategory.name}}</span>
+
+
             </div>
           </div>
         </div>
 
-        <div class="form-group">
-            <label for="branch">Product Category</label>
-            <input class="form-control" formControlName="category"
-              data-toggle="tooltip" data-placement="right" title="Enter Product Category">
-          </div>
+<!--        <div class="form-group">-->
+<!--            <label for="branch">Product Category</label>-->
+<!--            <input class="form-control" formControlName="categoryname"-->
+<!--              data-toggle="tooltip" data-placement="right" title="Enter Product Category" [(ngModel)]="selectedcategory.name" >-->
+<!--          </div>-->
 
         <div class="form-group">
           <ul>
             <li *ngFor="let sel of sellers">
-              <button [class.selected]="cat === selectedseller" type="button" (click)="onSelect2(sel)">
+              <button [class.selected]="sel === selectedseller" type="button" (click)="onSelect2(sel)">
                 <span class="name">{{sel.firstName}}</span>
                 <span class="name">{{sel.lastName}}</span>
 
@@ -60,17 +64,21 @@
             </li>
           </ul>
           <div *ngIf="selectedseller">
+
             <div>
-              <input type="hidden" class="form-control"  formControlName="seller" [(ngModel)]="selectedseller.firstName"  >
+              <input type="hidden" class="form-control"  formControlName="seller" [(ngModel)]="selectedseller"  >
+              <span class="name">{{selectedseller.firstName}}</span>
+
+              <span class="name">{{selectedseller.lastName}}</span>
             </div>
           </div>
         </div>
 
-        <div class="form-group">
-            <label for="branch">Product Seller</label>
-            <input class="form-control" formControlName="seller"
-              data-toggle="tooltip" data-placement="right" title="Enter Product Seller">
-          </div>
+<!--        <div class="form-group">-->
+<!--            <label for="branch">Product Seller</label>-->
+<!--            <input class="form-control" formControlName="seller"-->
+<!--              data-toggle="tooltip" data-placement="right" title="Enter Product Seller">-->
+<!--          </div>-->
 
         <button type="submit" class="btn btn-success">Add</button>
       </form>

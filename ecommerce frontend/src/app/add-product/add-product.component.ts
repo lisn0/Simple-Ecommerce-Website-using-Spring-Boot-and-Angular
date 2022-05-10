@@ -3,9 +3,10 @@ import { ProductService } from '../services/product.service';
 import {FormControl,FormGroup} from '@angular/forms';
 import { Product } from '../models/product';
 import {CategoryService} from "../services/category.service";
-import {Observable} from "rxjs";
+import {Observable, Subject} from "rxjs";
 import {Category} from "../models/category";
 import {Seller} from "../models/seller";
+
 import {SellerService} from "../services/seller.service";
 @Component({
   selector: 'app-add-product',
@@ -20,6 +21,7 @@ export class AddProductComponent implements OnInit {
     private sellerservice:SellerService
   ) { }
 
+  dtTrigger: Subject<any>= new Subject();
   product : Product=new Product();
   submitted = false;
   catigories: Observable<Category[]>;
@@ -68,7 +70,7 @@ export class AddProductComponent implements OnInit {
     this.product.id=this.ProductId.value;
     this.product.name=this.ProductName.value;
     this.product.description=this.ProductDescription.value;
-    this.product.price=this.ProductPrice.value;
+    this.product.price = parseFloat(this.ProductPrice.value);
     this.product.image_URL=this.ProductImage_URL.value;
     this.product.category=this.ProductCategory.value;
     this.product.seller=this.ProductSeller.value;
