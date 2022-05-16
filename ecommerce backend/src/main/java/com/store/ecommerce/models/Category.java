@@ -33,6 +33,10 @@ public class Category implements Serializable {
 		this.name = name;
 	}
 
+	public void setId(String id) {
+		this.id = id;
+	}
+
 	public List<Product> getProductsOfCategory() {
 		return productsOfCategory;
 	}

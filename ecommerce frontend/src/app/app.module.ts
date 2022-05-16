@@ -13,6 +13,7 @@ import { ProductService } from './services/product.service';
 import { AddProductComponent } from './add-product/add-product.component';
 import {CategoryListComponent} from './category-list/category-list.component';
 import {CategoryService} from './services/category.service';
+import { AddCategoryComponent } from './add-category/add-category.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import {CategoryService} from './services/category.service';
     ProductListComponent,
     AddProductComponent,
     CategoryListComponent,
+    AddCategoryComponent,
   ],
   imports: [
     BrowserModule,

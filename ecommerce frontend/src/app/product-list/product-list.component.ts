@@ -51,17 +51,19 @@ export class ProductListComponent implements OnInit {
       console.log(this.catigories);
     });
 
-    this.productservice.getProductList().subscribe(data =>{
-    this.products =data;
-    console.log('products');
-    console.log(this.products);
-    });
 
     this.sellerservice.getSellerList().subscribe(data =>{
       this.sellers =data;
       console.log('sellers');
       console.log(this.sellers);
     });
+    this.productservice.getProductList().subscribe(data =>{
+      this.products =data;
+      console.log('products');
+      console.log(this.products);
+      this.dtTrigger.next();
+    });
+
   }
   onSelect(cat: Category): void {
     this.selectedcategory = cat;
