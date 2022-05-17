@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { CategoryService } from '../services/category.service';
 import { Category } from '../models/category';
 import { Observable,Subject } from "rxjs";
 
 import {FormControl,FormGroup,Validators} from '@angular/forms';
-import { CategoryService } from '../services/category.service';
 
 @Component({
   selector: 'app-category-list',
@@ -23,7 +23,7 @@ export class CategoryListComponent implements OnInit {
   category: Category=new Category();
   updCategory: Category=new Category();
   deleteMessage=false;
-  sellerslist:any;
+  categorieslist:any;
   isupdated = false;
 
 
@@ -37,8 +37,6 @@ export class CategoryListComponent implements OnInit {
     };
     this.categoryservice.getCategoryList().subscribe(data =>{
     this.categorys =data;
-    console.log('categorys');
-    console.log(this.categorys);
     this.dtTrigger.next();
     })
   }
@@ -60,7 +58,7 @@ export class CategoryListComponent implements OnInit {
     this.categoryservice.getCategory(id)
       .subscribe(
         data => {
-          this.sellerslist=data
+          this.categorieslist=data
         },
         error => console.log(error));
   }
@@ -72,15 +70,18 @@ export class CategoryListComponent implements OnInit {
 
 
   categoryupdateform=new FormGroup({
+    id:new FormControl(),
     name:new FormControl(),
   });
 
   updateCat(updcat){
-   this.category=new Category();
-   this.category.name=this.CategoryName.value;
+    this.category=new Category();
+    this.category.id=this.CategoryId.value;
+    this.category.name=this.CategoryName.value;
+    console.log(this.CategoryId.value);
 
 
-   this.categoryservice.updateCategory(this.category.name,this.category).subscribe(
+   this.categoryservice.updateCategory(this.category.id,this.category).subscribe(
     data => {
       this.isupdated=true;
       this.categoryservice.getCategoryList().subscribe(data =>{
@@ -92,6 +93,9 @@ export class CategoryListComponent implements OnInit {
 
   get CategoryName(){
     return this.categoryupdateform.get('name');
+  }
+  get CategoryId(){
+    return this.categoryupdateform.get('id');
   }
 
 

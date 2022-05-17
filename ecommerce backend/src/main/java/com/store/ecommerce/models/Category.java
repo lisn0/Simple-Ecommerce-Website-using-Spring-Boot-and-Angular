@@ -18,8 +18,8 @@ public class Category implements Serializable {
 		
     private String name;
 
-    @DBRef(lazy = true)
-    private List<Product> productsOfCategory = new ArrayList<>();
+//    @DBRef(lazy = true)
+//    private List<Product> productsOfCategory = new ArrayList<>();
 
     public Category()
     {
@@ -36,17 +36,21 @@ public class Category implements Serializable {
 	public void setId(String id) {
 		this.id = id;
 	}
-
-	public List<Product> getProductsOfCategory() {
-		return productsOfCategory;
+	public String getId() {
+		return id;
 	}
 
-	public void setProductsOfCategory(List<Product> productsOfCategory) {
-		this.productsOfCategory = productsOfCategory;
-	}
+
+//	public List<Product> getProductsOfCategory() {
+//		return productsOfCategory;
+//	}
+
+//	public void setProductsOfCategory(List<Product> productsOfCategory) {
+//		this.productsOfCategory = productsOfCategory;
+//	}
 
 	public Category(String name)
-    {
-        this.name = name;
-    }
+	{
+		this.name = name;
+	}
 }

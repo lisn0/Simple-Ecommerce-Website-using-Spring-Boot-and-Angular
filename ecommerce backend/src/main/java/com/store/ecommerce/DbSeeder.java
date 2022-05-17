@@ -36,6 +36,7 @@ public class DbSeeder implements CommandLineRunner{
 
         Category cat1 = new Category("Books");
         Category cat2 = new Category("Food");
+
         _categoryRepository.save(cat1);
         _categoryRepository.save(cat2);
 
