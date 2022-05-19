@@ -41,7 +41,7 @@ A university project on a e-commerce website developed using java spring as a ba
 </pre>
 
 ### This project is created by:
-Zenned Bilel
-salma	yahyaoui
-jihen	oueslati
-rihab	khelifi
+Zenned Bilel  
+salma	yahyaoui  
+jihen	oueslati  
+rihab	khelifi  
