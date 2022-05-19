@@ -40,8 +40,14 @@ A university project on a e-commerce website developed using java spring as a ba
 
 </pre>
 
+### Preview.
+
+![image](https://user-images.githubusercontent.com/33394991/169332603-57e8685c-4df8-4cb9-9d05-0066126b96b1.png)
+
+
 ### This project is created by:
 Zenned Bilel  
 salma	yahyaoui  
 jihen	oueslati  
 rihab	khelifi  
+
