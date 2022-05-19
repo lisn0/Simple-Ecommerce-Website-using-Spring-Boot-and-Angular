@@ -1,7 +1,7 @@
 # Simple-Ecommerce-Website-using-Spring-Boot-and-Angular
 
 
-Ecommerce website developed using java spring as a backend, angular as a frontend and MongoDB
+A university project on a e-commerce website developed using java spring as a backend, angular as a frontend and MongoDB
 
 ### Technologies used
 - Spring Boot 
@@ -39,4 +39,10 @@ Ecommerce website developed using java spring as a backend, angular as a fronten
   POST /delete-category/{category_id} - Delete category 
 
 </pre>
+
+### This project is created by:
+Zenned Bilel
+salma	yahyaoui
+jihen	oueslati
+rihab	khelifi
 
